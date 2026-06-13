@@ -1,137 +1,429 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aravind Goud | AI Engineer</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aravind Goud | AI Engineer & Azure Developer</title>
+  <meta name="description" content="Portfolio of Aravind Goud — AI Engineer specializing in Azure AI Foundry, FastAPI, RAG Systems, and Generative AI.">
 
-<link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav>
-    <div class="logo">Aravind Goud</div>
+  <!-- ============ PARTICLE CANVAS ============ -->
+  <canvas id="particle-canvas"></canvas>
 
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
+  <!-- ============ CUSTOM CURSOR ============ -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- ============ LOADER ============ -->
+  <div class="loader" id="page-loader">
+    <div class="loader-inner">
+      <div class="loader-ring"></div>
+      <span class="loader-text">AG</span>
+    </div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <nav id="main-nav">
+    <a href="#" class="logo" id="nav-logo">
+      <span class="logo-bracket">&lt;</span>AG<span class="logo-bracket">/&gt;</span>
+    </a>
+
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" class="nav-link" data-section="about">About</a></li>
+      <li><a href="#skills" class="nav-link" data-section="skills">Skills</a></li>
+      <li><a href="#projects" class="nav-link" data-section="projects">Projects</a></li>
+      <li><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
     </ul>
-</nav>
 
-<section class="hero">
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-    <h1>AI Engineer & Azure Developer</h1>
-
-    <p>
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <p class="hero-greeting animate-on-scroll">Hello, I'm</p>
+      <h1 class="hero-name animate-on-scroll">Aravind Goud</h1>
+      <div class="hero-typewriter animate-on-scroll">
+        <span class="typewriter-prefix">I build </span>
+        <span class="typewriter-text" id="typewriter"></span>
+        <span class="typewriter-cursor">|</span>
+      </div>
+      <p class="hero-description animate-on-scroll">
         Building intelligent applications using Azure AI Foundry,
-        FastAPI, RAG Systems, Azure SQL and Generative AI.
-    </p>
+        FastAPI, RAG Systems, Azure SQL &amp; Generative AI.
+      </p>
+      <div class="hero-buttons animate-on-scroll">
+        <a href="#projects" class="btn-primary" id="btn-projects">
+          <span>View Projects</span>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="Aravind_Purella.pdf" class="btn-outline" download id="btn-resume">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span>Resume</span>
+        </a>
+      </div>
+      <div class="hero-stats animate-on-scroll">
+        <div class="stat">
+          <span class="stat-number" data-target="4">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number" data-target="10">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Technologies</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number" data-target="3">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Azure Certs</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator" id="scroll-indicator">
+      <div class="mouse">
+        <div class="mouse-wheel"></div>
+      </div>
+      <span>Scroll Down</span>
+    </div>
+  </section>
 
-    <div class="hero-buttons">
-        <a href="#projects" class="btn">View Projects</a>
-        <a href="resume.pdf" class="btn-secondary" download>Download Resume</a>
+  <!-- ============ ABOUT ============ -->
+  <section id="about" class="section">
+    <div class="section-header animate-on-scroll">
+      <span class="section-tag">&lt;about&gt;</span>
+      <h2>About Me</h2>
+      <div class="section-line"></div>
     </div>
 
-</section>
+    <div class="about-grid">
+      <div class="about-text animate-on-scroll">
+        <p>
+          I'm an <strong>AI Engineer</strong> passionate about building intelligent, cloud-native applications.
+          With hands-on experience in <strong>Azure AI Foundry</strong>, <strong>Azure Functions</strong>,
+          <strong>FastAPI</strong>, and <strong>RAG architectures</strong>, I create solutions that turn
+          complex data into actionable insights.
+        </p>
+        <p>
+          My expertise spans across the full AI development lifecycle — from data ingestion and model
+          integration to deploying scalable APIs backed by <strong>Azure SQL</strong> and
+          <strong>Docker</strong> containers. I thrive on solving challenging problems at the
+          intersection of AI and cloud computing.
+        </p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <div class="highlight-icon">🎯</div>
+            <div>
+              <h4>Focus</h4>
+              <p>Generative AI & Cloud Solutions</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">☁️</div>
+            <div>
+              <h4>Platform</h4>
+              <p>Microsoft Azure Ecosystem</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">⚡</div>
+            <div>
+              <h4>Approach</h4>
+              <p>Production-Ready AI Systems</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual animate-on-scroll">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <span class="terminal-dot red"></span>
+            <span class="terminal-dot yellow"></span>
+            <span class="terminal-dot green"></span>
+            <span class="terminal-title">aravind@portfolio:~</span>
+          </div>
+          <div class="terminal-body" id="terminal-body">
+            <div class="terminal-line">
+              <span class="terminal-prompt">$</span>
+              <span class="terminal-command">cat about.json</span>
+            </div>
+            <pre class="terminal-output">{
+  "name": "Aravind Goud",
+  "role": "AI Engineer",
+  "location": "India",
+  "languages": ["Python", "SQL", "JS"],
+  "cloud": "Azure",
+  "passion": "Building AI that matters"
+}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="about">
-
-    <h2>About Me</h2>
-
-    <p>
-        AI Engineer with hands-on experience in Azure AI Foundry,
-        Azure Functions, FastAPI, Azure SQL, RAG architectures,
-        Docker and cloud-native application development.
-    </p>
-
-</section>
-
-<section id="skills">
-
-    <h2>Technical Skills</h2>
-
-    <div class="skills-container">
-
-        <div class="skill-card">Python</div>
-        <div class="skill-card">FastAPI</div>
-        <div class="skill-card">Azure AI Foundry</div>
-        <div class="skill-card">Azure Functions</div>
-        <div class="skill-card">Azure SQL</div>
-        <div class="skill-card">Azure AI Search</div>
-        <div class="skill-card">Docker</div>
-        <div class="skill-card">Power BI</div>
-        <div class="skill-card">Git</div>
-        <div class="skill-card">Azure DevOps</div>
-
+  <!-- ============ SKILLS ============ -->
+  <section id="skills" class="section">
+    <div class="section-header animate-on-scroll">
+      <span class="section-tag">&lt;skills&gt;</span>
+      <h2>Technical Skills</h2>
+      <div class="section-line"></div>
     </div>
 
-</section>
+    <div class="skills-categories">
 
-<section id="projects">
+      <div class="skill-category animate-on-scroll">
+        <h3 class="category-title">
+          <span class="category-icon">🤖</span>
+          AI & Machine Learning
+        </h3>
+        <div class="skills-grid">
+          <div class="skill-chip" data-skill="90">
+            <span class="skill-name">Azure AI Foundry</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+          </div>
+          <div class="skill-chip" data-skill="85">
+            <span class="skill-name">Azure AI Search</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+          </div>
+          <div class="skill-chip" data-skill="88">
+            <span class="skill-name">RAG Architecture</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+          </div>
+          <div class="skill-chip" data-skill="82">
+            <span class="skill-name">Generative AI</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
+          </div>
+        </div>
+      </div>
 
-    <h2>Featured Projects</h2>
+      <div class="skill-category animate-on-scroll">
+        <h3 class="category-title">
+          <span class="category-icon">⚙️</span>
+          Backend & APIs
+        </h3>
+        <div class="skills-grid">
+          <div class="skill-chip" data-skill="92">
+            <span class="skill-name">Python</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+          </div>
+          <div class="skill-chip" data-skill="88">
+            <span class="skill-name">FastAPI</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+          </div>
+          <div class="skill-chip" data-skill="80">
+            <span class="skill-name">Azure Functions</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-chip" data-skill="85">
+            <span class="skill-name">Azure SQL</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-category animate-on-scroll">
+        <h3 class="category-title">
+          <span class="category-icon">🛠️</span>
+          DevOps & Tools
+        </h3>
+        <div class="skills-grid">
+          <div class="skill-chip" data-skill="85">
+            <span class="skill-name">Docker</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+          </div>
+          <div class="skill-chip" data-skill="80">
+            <span class="skill-name">Git & GitHub</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-chip" data-skill="78">
+            <span class="skill-name">Azure DevOps</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="78"></div></div>
+          </div>
+          <div class="skill-chip" data-skill="75">
+            <span class="skill-name">Power BI</span>
+            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS ============ -->
+  <section id="projects" class="section">
+    <div class="section-header animate-on-scroll">
+      <span class="section-tag">&lt;projects&gt;</span>
+      <h2>Featured Projects</h2>
+      <div class="section-line"></div>
+    </div>
 
     <div class="project-grid">
 
-        <div class="project-card">
-            <h3>Interview Assessment Agent</h3>
-            <p>
-                AI-powered interview system that generates questions
-                from resumes and evaluates candidate performance.
-            </p>
+      <div class="project-card animate-on-scroll" id="project-1">
+        <div class="project-card-glow"></div>
+        <div class="project-number">01</div>
+        <div class="project-icon">🎤</div>
+        <h3>Interview Assessment Agent</h3>
+        <p>
+          AI-powered interview system that generates contextual questions
+          from resumes, conducts live interviews, and evaluates candidate
+          performance with detailed scoring.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Azure OpenAI</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Python</span>
+          <span class="tag">RAG</span>
         </div>
+        <div class="project-links">
+          <a href="#" class="project-link" aria-label="View source code">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            Code
+          </a>
+        </div>
+      </div>
 
-        <div class="project-card">
-            <h3>Resume Formatter</h3>
-            <p>
-                Automated resume formatting and professional summary
-                generation using Azure OpenAI.
-            </p>
+      <div class="project-card animate-on-scroll" id="project-2">
+        <div class="project-card-glow"></div>
+        <div class="project-number">02</div>
+        <div class="project-icon">📄</div>
+        <h3>Resume Formatter</h3>
+        <p>
+          Automated resume formatting and professional summary
+          generation that transforms raw text into polished,
+          ATS-friendly documents using Azure OpenAI.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Azure OpenAI</span>
+          <span class="tag">Python</span>
+          <span class="tag">Document AI</span>
         </div>
+        <div class="project-links">
+          <a href="#" class="project-link" aria-label="View source code">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            Code
+          </a>
+        </div>
+      </div>
 
-        <div class="project-card">
-            <h3>SQL Chatbot</h3>
-            <p>
-                Natural language to SQL chatbot built with Azure SQL
-                and Azure OpenAI.
-            </p>
+      <div class="project-card animate-on-scroll" id="project-3">
+        <div class="project-card-glow"></div>
+        <div class="project-number">03</div>
+        <div class="project-icon">💬</div>
+        <h3>SQL Chatbot</h3>
+        <p>
+          Natural language to SQL chatbot that converts plain English
+          queries into optimized SQL, powered by Azure SQL
+          and Azure OpenAI integration.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Azure SQL</span>
+          <span class="tag">Azure OpenAI</span>
+          <span class="tag">NLP</span>
+          <span class="tag">FastAPI</span>
         </div>
+        <div class="project-links">
+          <a href="#" class="project-link" aria-label="View source code">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            Code
+          </a>
+        </div>
+      </div>
 
-        <div class="project-card">
-            <h3>Document Intelligence Assistant</h3>
-            <p>
-                Chat with uploaded documents using OCR,
-                Azure AI Search and RAG architecture.
-            </p>
+      <div class="project-card animate-on-scroll" id="project-4">
+        <div class="project-card-glow"></div>
+        <div class="project-number">04</div>
+        <div class="project-icon">📚</div>
+        <h3>Document Intelligence Assistant</h3>
+        <p>
+          Chat with uploaded documents using OCR, Azure AI Search,
+          and RAG architecture for intelligent, context-aware
+          document analysis.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Azure AI Search</span>
+          <span class="tag">RAG</span>
+          <span class="tag">OCR</span>
+          <span class="tag">Python</span>
         </div>
+        <div class="project-links">
+          <a href="#" class="project-link" aria-label="View source code">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            Code
+          </a>
+        </div>
+      </div>
 
     </div>
+  </section>
 
-</section>
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" class="section">
+    <div class="section-header animate-on-scroll">
+      <span class="section-tag">&lt;contact&gt;</span>
+      <h2>Let's Connect</h2>
+      <div class="section-line"></div>
+    </div>
 
-<section id="contact">
+    <div class="contact-content animate-on-scroll">
+      <p class="contact-description">
+        Have a project in mind or want to collaborate on AI solutions?
+        I'd love to hear from you. Let's build something amazing together.
+      </p>
 
-    <h2>Let's Connect</h2>
+      <div class="contact-cards">
+        <a href="mailto:yourmail@gmail.com" class="contact-card" id="contact-email">
+          <div class="contact-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+          </div>
+          <h4>Email</h4>
+          <p>yourmail@gmail.com</p>
+        </a>
 
-    <p>Email: yourmail@gmail.com</p>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="contact-card" id="contact-linkedin">
+          <div class="contact-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <h4>LinkedIn</h4>
+          <p>Connect with me</p>
+        </a>
 
-    <p>LinkedIn: linkedin.com/in/yourprofile</p>
+        <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="contact-card" id="contact-github">
+          <div class="contact-card-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+          </div>
+          <h4>GitHub</h4>
+          <p>View my repos</p>
+        </a>
+      </div>
+    </div>
+  </section>
 
-    <p>GitHub: github.com/yourusername</p>
+  <!-- ============ FOOTER ============ -->
+  <footer id="site-footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span class="logo-bracket">&lt;</span>AG<span class="logo-bracket">/&gt;</span>
+      </div>
+      <p class="footer-text">Designed & built by Aravind Goud</p>
+      <p class="footer-copyright">&copy; 2026 — All rights reserved.</p>
+    </div>
+  </footer>
 
-</section>
+  <!-- ============ SCROLL TO TOP ============ -->
+  <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 
-<footer>
-
-    <p>© 2026 Aravind Goud</p>
-
-</footer>
-
+  <script src="script.js"></script>
 </body>
 </html>
