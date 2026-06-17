@@ -153,7 +153,7 @@
   animateCursorRing();
 
   // Hover effect on interactive elements
-  document.querySelectorAll("a, button, .project-card, .skill-chip, .contact-card").forEach((el) => {
+  document.querySelectorAll("a, button, .project-card, .skill-badge, .contact-card").forEach((el) => {
     el.addEventListener("mouseenter", () => cursorRing.classList.add("hover"));
     el.addEventListener("mouseleave", () => cursorRing.classList.remove("hover"));
   });
@@ -275,9 +275,9 @@
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
 
-            // Animate skill bars when skills section is visible
+            // Animate skill badges when skills section is visible
             if (entry.target.closest("#skills")) {
-              animateSkillBars();
+              animateSkillBadges();
             }
 
             // Count up stats when hero stats are visible
@@ -300,20 +300,22 @@
   }
 
   // ==========================================
-  // 8. SKILL BAR ANIMATION
+  // 8. SKILL BADGES ANIMATION
   // ==========================================
-  let skillBarsAnimated = false;
+  let skillBadgesAnimated = false;
 
-  function animateSkillBars() {
-    if (skillBarsAnimated) return;
-    skillBarsAnimated = true;
+  function animateSkillBadges() {
+    if (skillBadgesAnimated) return;
+    skillBadgesAnimated = true;
 
-    document.querySelectorAll(".skill-fill").forEach((bar, i) => {
-      const width = bar.getAttribute("data-width");
+    document.querySelectorAll(".skill-badge").forEach((badge, i) => {
+      badge.style.opacity = "0";
+      badge.style.transform = "translateY(15px)";
+      badge.style.transition = "all 0.4s ease-out";
       setTimeout(() => {
-        bar.style.width = width + "%";
-        bar.classList.add("animated");
-      }, i * 100);
+        badge.style.opacity = "1";
+        badge.style.transform = "translateY(0)";
+      }, i * 35);
     });
   }
 
